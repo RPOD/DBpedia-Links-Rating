@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+    <div class="container">
+
+      {% if messages %}
+          {% for message in messages %}
+              <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+          {% endfor %}
+      {% endif %}
+    {% block content %}
+      {% if request.user.is_authenticated %}
+
+        <p>Here you can rate our links!</p>
+      {% else %}
+        <p>Please log yourself in first.</p>
+
+      {% endif %}
+    {% endblock content %}
+
+    </div> <!-- /container -->
