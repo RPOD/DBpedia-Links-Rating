@@ -8,8 +8,23 @@
       {% endif %}
     {% block content %}
       {% if request.user.is_authenticated %}
-
-        <p>Here you can rate our links!</p>
+        {% with Rating.random_link as link %}
+        <div class="link">
+            <ul>
+                <li><strong>Subject: </strong>{{ link.subject }}</li>
+                <li><strong>Predicate: </strong>{{ link.predicate }}</li>
+                <li><strong>Object: </strong>{{ link.object }}</li>
+                <li><strong>Rate: </strong>{{ rating }}</li>
+            </ul>
+        {% endwith %}
+          <form action="{% url 'rating' %}" method="post">
+            {% csrf_token %}
+            {{ create_rating_form }}
+            <input type="hidden" name="return_url" value="{{ return_url }}">
+            <input type="hidden" name="content_type_id" value="{{ content_type_id }}">
+            <input type="hidden" name="object_id" value="{{ object_id }}">
+            <input type="submit" value="Submit" />
+          </form>
       {% else %}
         <p>Please log yourself in first.</p>
 

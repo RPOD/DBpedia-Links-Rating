@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from .models import Link, UserRating, File
+from .models import Link, Rating, File
 
 admin.site.register(Link)
-admin.site.register(UserRating)
+admin.site.register(Rating)
 admin.site.register(File)

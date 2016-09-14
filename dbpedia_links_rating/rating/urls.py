@@ -10,7 +10,7 @@ app_name = 'rating'
 urlpatterns = [
 
     url(
-        regex = r'^(?P<link_id>[0-9]*)/$',
-        view = views.RatingView.as_view(),
-        name = 'rating-index'),
+        regex = r'^$',
+        view = views.Rating.as_view(),
+        name = 'rating'),
 ]
